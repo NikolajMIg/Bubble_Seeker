@@ -1,0 +1,162 @@
+READ ME
+
+Table of Contents
+Folder Contents
+PY Files	
+Data	
+Command Files	
+Overview	
+Visual Code	
+General Remarks
+Program Startup
+Starting the Program
+At startup the program
+If not launched from .bat/.sh
+If launched from a command file
+Running the program	
+Action 1	
+Action 2	
+Action 3	
+Prediction
+Distribution
+Export to CSV
+Save Results
+ML Dashboard
+Show all plots
+Select graphs
+
+Folder Contents:
+
+PY Files
+
+•	Analysis.py
+•	DISTRIB.py
+•	General_ML.py
+•	History.py
+•	History_ML.py
+•	main_ML.py  <<<< Main Program
+•	ML_Predictor.py
+•	pip_version_checker.py
+•	requirements_checker.py
+•	Sector_Data.py
+•	Tools.py
+•	Mathematik.py
+
+Data
+
+•	ml_historical_data.json
+•	ml_historical_data.BAK
+•	Nico_Requirements.txt
+
+Command Files
+
+•	Nicola.bat
+•	Nicola.sh
+
+Overview
+
+•	This README file
+
+Visual Code
+
+•	nicola.sh
+•	Visualization.py
+•	main_ML.pyproj
+•	main_ML.sln
+
+General Remarks:
+
+The layout was tested on a 1920x1080 screen. With lower resolutions, layout issues may occur.
+Python 3.13 minimum required. Due to bugs in early Python thread implementations, version 3.13.9 or later is preferred.
+All graphs include zoom, fullscreen, print, PDF save, layout adjustment, etc.
+The development of this program required extensive web research, consultation of many online Python courses.
+
+Program Startup:
+
+The program can be started:	
+•	Under Visual Code control, running in the default Python environment
+•	Or in a virtual environment using a command file On Windows, run Nicola.bat; on macOS, run Nicola.sh from the program directory. 
+Note: On some systems Python is launched with “python”, on others with “python3”.
+
+
+Starting the Program:
+
+At startup the program:
+
+1.	Checks network connection
+2.	Detects Windows or Mac
+3.	Verifies Python version (tested with Python 3.13.9)
+4.	If there is no internet connection or Python is too old, the program stops with an error message
+5.	The program checks whether it was launched from .bat or .sh using a first parameter set to “NICO_BAT_Mode” (check .bat and/or .sh files in which it may be necessary to replace python with python3 as indicated above)
+
+If not launched from .bat/.sh:
+
+1.	Updates pip (default environment)
+2.	Installs missing libraries (default environment)
+
+If launched from a command file:	
+
+1.	Creates and activates a virtual environment named “Nicola__env”
+2.	Installs required libraries
+3.	Launches Python with ml_main.py and argument NICO_BAT_Mode
+4.	No pip update or library installation occurs in the base Python
+5.	The program loads “ml_historical_data.json”. If missing or too short, data can be reloaded from the web (minimum 50 entries) or restored from “ml_historical_data.BAK” if available.
+6.	The program replaces immediate exit via the “X” button with a confirmation prompt, followed by saving, cleanup of temporary files, and updating “ml_historical_data.json”.
+
+Running the program
+
+Action 1
+
+Press “Run Sector Analysis” to complete or update ml_historical_data.json. This may take time depending on internet speed and server responsiveness.
+Once enough data is loaded, proceed to the next step.
+
+Action 2
+
+Train ML models by pressing “Train ML Models”. The program evaluates four predefined models and multiple parameter sets. This process may take time.
+After completion, a window displays six graphs:
+•	Training dataset
+•	Test dataset
+•	Prediction results for the four models
+•	Ideal prediction curve (Ŷ = Y)
+Numerical results are shown in the central dropdown list.
+Action 3
+
+After training, additional fields are enabled.
+
+Prediction:
+Use “ML Prediction” then “Show ML Prediction” to display results.
+
+Distribution:
+Press “Distribution Analysis” to
+Analyze closing values and/or volumes.
+A first window allows data selection and grouping
+Then press:
+“Return”: back to main window
+“Plot data selection”: visualize selected data
+“Start estimation”: begin estimation
+
+The estimation window allows:
+•	Polynomial degree selection
+•	Data age weighting (use “Ponderation Help” for visualization) 
+•	Time domain selection
+•	Press “Fit data” to perform the fit and display standard deviation results.
+The results are displayed in the dropdown list. 
+•	“Distribution Function” displays the distribution function and probability density.
+
+Export to CSV:	
+Creates an Excel file containing all distribution analysis data.
+
+Save Results:
+Saves dropdown content to JSON and PDF formats.
+
+ML Dashboard:	
+Similar to Show ML Prediction but displayed in a browser (tested with Firefox).
+
+Show all plots:	
+Displays all available graphs.
+
+Select graphs:
+Choose which graphs to display and visualize the selection.
+
+Note
+Some buttons are initially disabled and will become available as you complete certain prerequisite steps or milestones within the program.
